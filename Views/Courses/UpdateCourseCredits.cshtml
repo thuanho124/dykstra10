@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "UpdateCourseCredits"; <!-- title -->
+}
+
+<h2>Update Course Credits</h2>
+
+<!-- if nothing returned in ViewData, there is an empty text box and a submit button
+also, it prompts for user input-->
+@if (ViewData["RowsAffected"] == null)
+{
+    <form asp-action="UpdateCourseCredits">
+        <div class="form-actions no-color">
+            <p>
+                Enter a number to multiply every course's credits by: @Html.TextBox("multiplier")
+            </p>
+            <p>
+                <input type="submit" value="Update" class="btn btn-default" />
+            </p>
+        </div>
+    </form>
+}
+<!-- if there is a value entered in ViewData, and the Update button is clicked
+it returns the number of rows updated-->
+@if (ViewData["RowsAffected"] != null)
+{
+    <p>
+        Number of rows updated: @ViewData["RowsAffected"]
+    </p>
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
